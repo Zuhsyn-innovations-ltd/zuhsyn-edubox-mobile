@@ -149,3 +149,19 @@ def update_user_profile(request):
     profile.save()
 
     return Response({"message": "Profile updated successfully"})
+
+
+# views.py
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_score(request):
+    user = request.user
+    subject = request.data.get("subject")
+    points = int(request.data.get("points", 0))
+
+    profile = user.profile
+    profile.score += points
+    profile.save()
+
+    return Response({'message': 'Score updated!'}, status=200)
+

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RegisterView, MyTokenObtainPairView, DashboardView, LeaderboardView, PasswordResetRequestView, PasswordTokenCheckView, SetNewPasswordView, get_user_profile, update_user_profile
+from .views import RegisterView, MyTokenObtainPairView, DashboardView,update_score, LeaderboardView, PasswordResetRequestView, PasswordTokenCheckView, SetNewPasswordView, get_user_profile, update_user_profile
 from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
@@ -14,4 +14,6 @@ urlpatterns = [
     path('user/update/', update_user_profile),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
     path('leaderboard/', LeaderboardView.as_view(), name='leaderboard'),
+    path("api/update-score/", update_score, name="update-score")
+
 ]
